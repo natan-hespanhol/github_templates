@@ -1,0 +1,49 @@
+---
+####################
+# Repo Settings
+####################
+
+#_extends: ".github:.github/settings.yml"
+
+repository:
+  name: .github
+  description: Settings configuration for all team repos
+  topics: github, probot, settings, auto, template, compliance
+  private: true
+  visibility: "internal"
+  has_projects: false
+  default_branch: main
+  allow_squash_merge: false
+
+teams:
+  - name: ag
+    permission: push
+  - name: ag-admins
+    permission: maintain
+  - name: AG-DevOps
+    permission: maintain
+  - name: ag-devops
+    permission: maintain
+
+branches:
+  - name: main
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 2
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: true
+        dismissal_restrictions:
+          users: [ ]
+          teams: [ ]
+      enforce_admins: false
+      required_conversation_resolution: false
+      required_linear_history: false
+      required_status_checks:
+        strict: true
+        contexts: [ ]
+      required_signatures: false
+      allow_force_pushes: false
+      allow_deletions: false
+      block_creations: false
+      lock_branch: false
+      allow_fork_syncing: false
